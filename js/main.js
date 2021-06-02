@@ -1,10 +1,10 @@
 /*
 Surasti h1 (antraste)
-Prideti prie jos CSS class, kuri pakeicia tekso spalva i raudona
+Perrasyti h1 elemento teksta i "Zuikio darzas"
 
-Surasti visus ingredientus
-Kiekvienam ingredienui prideti CSS class pavadinimu darzove
+Surasti visus darzoves
+Kiekvienos darzoves teksta pakeisti i "Israuta darzove"
 */
 
 const h1DOM = document.querySelector('h1');
-h1DOM.classList.add('simba');
+h1DOM.innerText = 'Zuikio darzas';
