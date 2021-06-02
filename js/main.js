@@ -1,20 +1,10 @@
 /*
-Surasti visus ingredietus ir ju pavadinimus atspausdinti i console
+Surasti h1 (antraste)
+Prideti prie jos CSS class, kuri pakeicia tekso spalva i raudona
 
-Visu ingredienu pavadinimai turi buti didziosiomis raidemis ir sudeti i array
-
-Isspausdinti gauta array i console
-
-Norimas rezultatas:
-['MORKOS', 'BULVES', 'SVOGUNAS', 'VANDUO', 'DRUSKA']
+Surasti visus ingredientus
+Kiekvienam ingredienui prideti CSS class pavadinimu darzove
 */
 
-const liDOM = document.querySelectorAll('li');
-const ingredientai = [];
-
-for (let i = 0; i < liDOM.length; i++) {
-    const ingredientas = liDOM[i].innerText;
-    ingredientai.push(ingredientas);
-}
-
-console.log(ingredientai);
+const h1DOM = document.querySelector('h1');
+h1DOM.classList.add('simba');
