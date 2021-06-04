@@ -5,8 +5,12 @@ const plusDOM = document.querySelector('.plus');
 const numberDOM = document.querySelector('.number');
 const resetDOM = document.querySelector('.reset');
 const h1DOM = document.querySelector('h1');
+const ulDOM = document.querySelector('ul');
+
 const gameInProgressMessage = 'Žaidimas progrese';
 const initialH1Text = h1DOM.innerText;
+
+ulDOM.innerHTML = `<li>Tu pasileidai zaidima - sekmes!</li>`;
 
 minusDOM.addEventListener('click', () => {
     numberDOM.innerText = --rezultatas;
