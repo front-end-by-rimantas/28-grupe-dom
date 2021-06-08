@@ -1,49 +1,26 @@
-const submitDOM = document.querySelector('button');
-const orderDOM = document.querySelector('.order');
-const nameDOM = document.querySelector('#customer');
-const sriubaDOM = document.querySelector('#sriuba');
-const pagrindinisPatiekalasDOM = document.querySelector('#patiekalas');
-const desertasDOM = document.querySelector('#desertas');
-const allGerimaiDOM = document.querySelectorAll('input[name="gerimas"]');
+const lentaDOM = document.querySelector('.lenta');
+const namuRezultatasDOM = lentaDOM.querySelector('[data-komanda="namu"]');
+const sveciuRezultatasDOM = lentaDOM.querySelector('[data-komanda="sveciu"]');
 
-function arNoriu(DOM) {
-    return DOM.checked ? 'nori' : 'nenori';
+const aiksteleDOM = document.querySelector('.aikstele');
+
+const namuKomandaDOM = aiksteleDOM.querySelector('[data-komanda="namu"]');
+const namuTaskaiDOM = namuKomandaDOM.querySelectorAll('button');
+
+const sveciuKomandaDOM = aiksteleDOM.querySelector('[data-komanda="sveciu"]');
+const sveciuTaskaiDOM = sveciuKomandaDOM.querySelectorAll('button');
+
+let namuRezultatas = 0;
+let sveciuRezultatas = 0;
+
+for (let i = 0; i < 3; i++) {
+    namuTaskaiDOM[i].addEventListener('click', () => {
+        namuRezultatas += i + 1;
+        namuRezultatasDOM.innerText = namuRezultatas;
+    })
+
+    sveciuTaskaiDOM[i].addEventListener('click', () => {
+        sveciuRezultatas += i + 1;
+        sveciuRezultatasDOM.innerText = sveciuRezultatas;
+    })
 }
-
-function kurisPazymetas(DOMlist) {
-    for (const itemDOM of DOMlist) {
-        if (itemDOM.checked) {
-            return itemDOM.value;
-        }
-    }
-}
-
-submitDOM.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const vardas = nameDOM.value.trim();
-    const pasirinktasGerimas = kurisPazymetas(allGerimaiDOM);
-    const sakinioPradzia = vardas ? 'vardu ' + vardas : 'nenudores vardo';
-    const sakinioPabaiga = pasirinktasGerimas ? pasirinktasGerimas + ' yra pasirinktas gerimas' : 'gerimo nepasirinko';
-
-    orderDOM.innerText = `Uzsakovas ${sakinioPradzia} ${arNoriu(sriubaDOM)} sriubos, ${arNoriu(pagrindinisPatiekalasDOM)} pagrindinio patiekalo, ${arNoriu(desertasDOM)} deserto ir ${sakinioPabaiga}.`;
-})
-
-/*
-PRADZIA:
-Uzsakovas vardu X nori....
-Uzsakovas nenurodes vardo nori....
-
-PABAIGA:
-ir X yra pasirinktas gerimas.
-ir gerimo nepasirinko.
-
-
-EXTRA:
-Uzsakovas vardu X nori sriubos, pagrindinio patiekalo, deserto ir [gerimas]
-Uzsakovas vardu X nori sriubos, pagrindinio patiekalo, bet nenori deserto ir [gerimas]
-Uzsakovas vardu X nori sriubos, bet nenori pagrindinio patiekalo, deserto ir [gerimas]
-Uzsakovas vardu X nenori sriubos, pagrindinio patiekalo, deserto ir [gerimas]
-
-
-*/

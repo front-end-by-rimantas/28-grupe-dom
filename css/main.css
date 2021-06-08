@@ -2,14 +2,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 40px;
+  gap: 15px;
+  padding: 20px;
 }
 .lenta {
   display: flex;
   gap: 40px;
-  padding: 20px 80px;
-  font-size: 100px;
+  padding: 10px 80px;
+  font-size: 90px;
   border: 2px solid #ccc;
   border-radius: 10px;
 }
@@ -26,6 +26,6 @@ form {
   gap: 20px;
 }
 button {
-  line-height: 50px;
+  line-height: 45px;
   font-size: 30px;
 }
