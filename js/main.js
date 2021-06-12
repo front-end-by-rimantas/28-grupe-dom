@@ -1,6 +1,6 @@
 // https://www.w3schools.com/tags/tag_select.asp
 
-function renderSelect(selector, dataList) {
+function renderSelect(selector, dataList, id) {
     // susirandame vieta, kur zemiau kurio elemento tures nugulti naujas turinys
     const DOM = document.querySelector(selector);
 
@@ -11,20 +11,26 @@ function renderSelect(selector, dataList) {
     }
 
     // sukonstruojame galutini select elementa ir istatome i reikiama vieta
-    const HTML = `<select>${optionsHTML}</select>`;
+    const HTML = `<select id="${id}">${optionsHTML}</select>`;
     DOM.insertAdjacentHTML('afterend', HTML);
 }
 
 const animals = ['zuikis', 'barsukas', 'lape', 'vilkas', 'sernas', 'stirna', 'vovere'];
-renderSelect('label', animals);
+renderSelect('label[for="animal"]', animals, 'animal');
 
-// const vegetables = ['morka', 'svogunas', 'bulve'];
-// renderSelect('label', vegetables);
+const vegetables = ['morka', 'svogunas', 'bulve'];
+renderSelect('label[for="vegetable"]', vegetables, 'vegetable');
 
-const selectDOM = document.querySelector('select');
+const allSelectDOM = document.querySelectorAll('select');
+
 const buttonDOM = document.querySelector('button');
 const optionDOM = document.querySelector('.option');
+
 buttonDOM.addEventListener('click', (event) => {
     event.preventDefault();
-    optionDOM.innerText = selectDOM.value;
+
+    const pasirinkimai = Array.from(allSelectDOM).map(DOM => DOM.value);
+
+    const pasirinkimuZinute = pasirinkimai.join(', ');
+    optionDOM.innerText = pasirinkimuZinute;
 })
