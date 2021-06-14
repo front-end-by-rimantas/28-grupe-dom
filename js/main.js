@@ -12,16 +12,13 @@ buttonDOM.addEventListener('click', (e) => {
 
 function renderBoard(DOMelement, size) {
     const elementSize = 100 / size;
-    // const cellHTML = `<div class="cell" style="width: ${elementSize}%;"></div>`.repeat(size);
-    // const rowHTML = `<div class="row" style="height: ${elementSize}%;">${cellHTML}</div>`;
-    // DOMelement.innerHTML = rowHTML.repeat(size);
-
     let cellHTML = '';
+    let HTML = '';
+
     for (let c = 0; c < size; c++) {
         cellHTML += `<div class="cell" style="width: ${elementSize}%;"></div>`;
     }
 
-    let HTML = '';
     for (let r = 0; r < size; r++) {
         HTML += `<div class="row" style="height: ${elementSize}%;">${cellHTML}</div>`;
     }
