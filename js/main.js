@@ -12,14 +12,25 @@ buttonDOM.addEventListener('click', (e) => {
 
 function renderBoard(DOMelement, size) {
     const elementSize = 100 / size;
-    let cellHTML = '';
+    let whiteBlackCellHTML = '';
+    let blackWhiteCellHTML = '';
     let HTML = '';
+    const whiteCellHTML = `<div class="cell" style="width: ${elementSize}%; background-color: white;"></div>`;
+    const blackCellHTML = `<div class="cell" style="width: ${elementSize}%; background-color: black;"></div>`;
 
     for (let c = 0; c < size; c++) {
-        cellHTML += `<div class="cell" style="width: ${elementSize}%;"></div>`;
+        if (c % 2 === 0) {
+            whiteBlackCellHTML += whiteCellHTML;
+            blackWhiteCellHTML += blackCellHTML;
+        } else {
+            whiteBlackCellHTML += blackCellHTML;
+            blackWhiteCellHTML += whiteCellHTML;
+        }
     }
 
+    let cellHTML = '';
     for (let r = 0; r < size; r++) {
+        cellHTML = r % 2 === 0 ? whiteBlackCellHTML : blackWhiteCellHTML;
         HTML += `<div class="row" style="height: ${elementSize}%;">${cellHTML}</div>`;
     }
 
