@@ -11,11 +11,19 @@ buttonDOM.addEventListener('click', (e) => {
 })
 
 function renderBoard(DOMelement, size) {
-    const rowHeight = 100 / size;
-    let HTML = '';
+    const elementSize = 100 / size;
+    // const cellHTML = `<div class="cell" style="width: ${elementSize}%;"></div>`.repeat(size);
+    // const rowHTML = `<div class="row" style="height: ${elementSize}%;">${cellHTML}</div>`;
+    // DOMelement.innerHTML = rowHTML.repeat(size);
 
-    for (let i = 0; i < size; i++) {
-        HTML += `<div class="row" style="height: ${rowHeight}%;"></div>`;
+    let cellHTML = '';
+    for (let c = 0; c < size; c++) {
+        cellHTML += `<div class="cell" style="width: ${elementSize}%;"></div>`;
+    }
+
+    let HTML = '';
+    for (let r = 0; r < size; r++) {
+        HTML += `<div class="row" style="height: ${elementSize}%;">${cellHTML}</div>`;
     }
 
     DOMelement.innerHTML = HTML;
