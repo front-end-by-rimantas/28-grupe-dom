@@ -1,9 +1,9 @@
-function time(nuo, iki) {
-    for (let h = nuo; h < iki; h++) {
-        for (let m = 0; m < 60; m += 1) {
-            console.log(`${h}:${m < 10 ? '0' + m : m}`);
-        }
+function time(nuo, iki, trukme) {
+    for (let i = nuo * 60; i <= iki * 60; i += trukme) {
+        const h = Math.floor(i / 60);
+        const m = i - h * 60;
+        console.log(`${h}:${m < 10 ? '0' + m : m}`);
     }
 }
 
-time(3, 5);
+time(8, 11, 45);
